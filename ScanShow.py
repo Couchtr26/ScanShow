@@ -5,9 +5,11 @@ from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import sys
-from flask import Flask, render_template
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+
+app = Flask(__name__, template_folder='templates', static_folder='static')
+os.makedirs('generated_qrs', exist_ok=True)
 
 # If running from PyInstaller .exe bundle
 if getattr(sys, 'frozen', False):
@@ -53,5 +55,4 @@ def generate_qr():
 if __name__ == '__main__':
     import webbrowser
     webbrowser.open('http://127.0.0.1:5000')
-    os.makedirs('generated_qrs', exist_ok=True)
     app.run(debug=True)
